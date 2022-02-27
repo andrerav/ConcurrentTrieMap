@@ -1,0 +1,17 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Andreas Ravnestad</Authors>
+        <Copyright>Copyright © $([System.DateTime]::Now.ToString(`yyyy`)) Andreas Ravnestad</Copyright>
+        <Description>A fast concurrent trie map implementation</Description>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <Version>0.1.0</Version>
+		<PackageProjectUrl>https://github.com/andrerav/ConcurrentTrieMap</PackageProjectUrl>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageTags>Trie Prefix Tree Map Concurrent Thread Safe Threadsafe</PackageTags>
+		<!--<PackageIcon>logo.png</PackageIcon>-->
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReleaseNotes>https://github.com/andrerav/ConcurrentTrieMap/blob/main/CHANGELOG.md</PackageReleaseNotes>
+		<IsPackable>false</IsPackable>
+    </PropertyGroup>
+</Project>
