@@ -4,12 +4,10 @@
 
     public class CtrieOptions
     {
-        public readonly int ConcurrencyLevel;
         public readonly int InitialChildNodeCapacity;
 
-        public CtrieOptions(int concurrencyLevel, int initialChildNodeCapacity)
+        public CtrieOptions(int initialChildNodeCapacity)
         {
-            ConcurrencyLevel = concurrencyLevel;
             InitialChildNodeCapacity = initialChildNodeCapacity;
         }
     }

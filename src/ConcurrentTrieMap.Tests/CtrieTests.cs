@@ -256,7 +256,7 @@ namespace ConcurrentTrieMap.Tests
 
         private static CtrieMap<int> BuildLargeCtrie()
         {
-            var ctrie = new CtrieMap<int>(Environment.ProcessorCount, TestUtils.Chars.Length);
+            var ctrie = new CtrieMap<int>(TestUtils.Chars.Length);
             Parallel.ForEach(Fasit, kvp =>
             {
                 ctrie.Add(kvp.Key, kvp.Value);

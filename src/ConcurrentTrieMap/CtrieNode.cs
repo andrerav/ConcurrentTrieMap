@@ -6,7 +6,7 @@ using System.Linq;
 namespace ConcurrentTrieMap
 {
     [DebuggerDisplay("{Char}")]
-    public class CtrieNode<T>
+    public class CtrieNode<T> : ICtrieNode<T>
     {
         private readonly char _c;
         private readonly object _lockObject = new object();
@@ -31,6 +31,9 @@ namespace ConcurrentTrieMap
             _options = options;
         }
 
+        /// <summary>
+        /// Builds and returns the key for this node
+        /// </summary>
         public string Key
         {
             get
@@ -49,9 +52,14 @@ namespace ConcurrentTrieMap
 
         public char Char => _c;
 
+        /// <summary>
+        /// Returns the number of child nodes that has a value starting from and including this node
+        /// </summary>
         public int Count => (_hasValue ? 1 : 0) + (_children?.Sum(c => c.Value?.Count) ?? 0);
 
-        // Not thread safe
+        /// <summary>
+        /// A dictionary containing the child nodes referenced from this node
+        /// </summary>
         public Dictionary<char, CtrieNode<T>> Children
         {
             get

@@ -8,9 +8,11 @@ namespace ConcurrentTrieMap
     /// This implementation is based on node-level locks
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class CtrieMap<T>
+    public class CtrieMap<T> : ICtrieMap<T>
     {
         protected CtrieOptions Options = null;
+
+        /// <inheritdoc/>
         public CtrieNode<T> RootNode { get; set; }
         public int Count => RootNode.Count;
 
@@ -19,9 +21,13 @@ namespace ConcurrentTrieMap
             RootNode = new CtrieNode<T>(' ', parent: null);
         }
 
-        public CtrieMap(int concurrencyLevel, int initialChildNodeCapacity) : this()
+        /// <summary>
+        /// Creates a new trie map with the configured initial capacity for child nodes.
+        /// </summary>
+        /// <param name="initialChildNodeCapacity">Initial child node capacity (i.e the expected number of evenly distributed children per node)</param>
+        public CtrieMap(int initialChildNodeCapacity) : this()
         {
-            Options = new(concurrencyLevel, initialChildNodeCapacity);
+            Options = new(initialChildNodeCapacity);
         }
 
         public CtrieMap(CtrieOptions options) : this()
@@ -29,6 +35,7 @@ namespace ConcurrentTrieMap
             Options = options;
         }
 
+        /// <inheritdoc/>
         public void Add(string key, T value)
         {
             var trieNode = RootNode;
@@ -39,6 +46,7 @@ namespace ConcurrentTrieMap
             trieNode.Value = value;
         }
 
+        /// <inheritdoc/>
         public void Remove(string key)
         {
             var nodeToBeRemoved = GetNodeByKey(key);
@@ -76,6 +84,7 @@ namespace ConcurrentTrieMap
             }
         }
 
+        /// <inheritdoc/>
         public bool ContainsKey(string key)
         {
             CtrieNode<T> node = GetNodeByKey(key);
@@ -83,6 +92,7 @@ namespace ConcurrentTrieMap
             return node != null && node.HasValue;
         }
 
+        /// <inheritdoc/>
         public T GetValue(string key)
         {
             CtrieNode<T> node = GetNodeByKey(key);
@@ -93,6 +103,7 @@ namespace ConcurrentTrieMap
             return default(T);
         }
 
+        /// <inheritdoc/>
         public CtrieNode<T> GetNodeByKey(string key)
         {
             var node = RootNode;
@@ -106,6 +117,7 @@ namespace ConcurrentTrieMap
             return node;
         }
 
+        /// <inheritdoc/>
         public IEnumerable<CtrieNode<T>> GetNodesByValue(T value)
         {
             return GetNodesByValue(value, RootNode);
@@ -130,6 +142,7 @@ namespace ConcurrentTrieMap
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<CtrieNode<T>> GetAllNodes()
         {
             return GetAllNodes(RootNode);

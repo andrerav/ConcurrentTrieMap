@@ -17,7 +17,7 @@ public class ReadBenchmark : AbstractTrieBenchmarks
 	{
 		base.Setup();
 
-		ctrie = new CtrieMap<int>(Environment.ProcessorCount, TestUtils.Chars.Length);
+		ctrie = new CtrieMap<int>(TestUtils.Chars.Length);
 		Parallel.ForEach(Fasit, kvp =>
 		{
 			ctrie.Add(kvp.Key, kvp.Value);
