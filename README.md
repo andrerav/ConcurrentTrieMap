@@ -14,6 +14,9 @@ ctrie.Add("abc", 3);
 
 // Return a specific value
 ctrie.GetValue("ab"); // Returns 2
+
+// Return a list of tuples (key, values) in the trie starting at the specified prefix
+ctrie.GetValues("ab"); // Returns [("ab", 2), ("abc", 3)]
 ```
 
 ## Description
