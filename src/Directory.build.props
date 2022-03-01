@@ -9,9 +9,12 @@
 		<PackageProjectUrl>https://github.com/andrerav/ConcurrentTrieMap</PackageProjectUrl>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<PackageTags>Trie Prefix Tree Map Concurrent Thread Safe Threadsafe</PackageTags>
-		<!--<PackageIcon>logo.png</PackageIcon>-->
+		<PackageIcon>logo.png</PackageIcon>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>https://github.com/andrerav/ConcurrentTrieMap/blob/main/CHANGELOG.md</PackageReleaseNotes>
 		<IsPackable>false</IsPackable>
     </PropertyGroup>
+	<ItemGroup>
+		<None Include="./../../media/logo/logo.png" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>		
 </Project>
