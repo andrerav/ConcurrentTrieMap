@@ -245,6 +245,29 @@ namespace ConcurrentTrieMap.Tests
             Assert.AreEqual("aba", node4.Key);
         }
 
+        [TestMethod]
+        public void GetValuesByKey01()
+        {
+            var ctrie = BuildSmallCtrie();
+            var kvts = ctrie.GetValues("ab").ToList();
+            Assert.AreEqual(2, kvts.Count);
+            Assert.AreEqual("ab", kvts[0].Item1);
+            Assert.AreEqual("abc", kvts[1].Item1);
+        }
+
+        [TestMethod]
+        public void GetValuesByKey02()
+        {
+            var ctrie = BuildSmallCtrie();
+            ctrie.Add("aba", 4);
+            var kvts = ctrie.GetValues("ab").ToList();
+            Assert.AreEqual(3, kvts.Count);
+            Assert.AreEqual("ab", kvts[0].Item1);
+            Assert.AreEqual("abc", kvts[1].Item1);
+            Assert.AreEqual("aba", kvts[2].Item1);
+        }
+
+
         private static CtrieMap<int> BuildSmallCtrie()
         {
             CtrieMap<int> ctrie = new CtrieMap<int>();

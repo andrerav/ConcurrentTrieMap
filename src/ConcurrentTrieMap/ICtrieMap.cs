@@ -60,6 +60,13 @@ namespace ConcurrentTrieMap
         T GetValue(string key);
 
         /// <summary>
+        /// Returns all values in the trie starting at the given key. The values are returned in (key, value) tuples.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        IEnumerable<(string, T)> GetValues(string key);
+
+        /// <summary>
         /// Removes the given key and value from the trie map.
         /// This operation is thread safe.
         /// </summary>

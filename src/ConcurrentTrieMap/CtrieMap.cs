@@ -95,12 +95,28 @@ namespace ConcurrentTrieMap
         /// <inheritdoc/>
         public T GetValue(string key)
         {
-            CtrieNode<T> node = GetNodeByKey(key);
+            var node = GetNodeByKey(key);
             if (node != null)
             {
                 return node.Value;
             }
             return default(T);
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<(string, T)> GetValues(string key)
+        {
+            var node = GetNodeByKey(key);
+            if (node == null)
+            {
+                yield break;
+            }
+
+            var keyValueTuples = GetAllNodes(node).Select(x => (x.Key, x.Value));
+            foreach (var keyValueTuple in keyValueTuples)
+            {
+                yield return keyValueTuple;
+            }
         }
 
         /// <inheritdoc/>
