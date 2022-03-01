@@ -20,4 +20,4 @@ ctrie.GetValues("ab"); // Returns [("ab", 2), ("abc", 3)]
 ```
 
 ## Description
-ConcurrentTrieMap is a simple trie map implementation that guarantees thread safety on some basic operations such as adding, deleting and modifying entries in the map. This data structure is optimized for usage in scenarios where fast concurrent prefix lookups are required while still retaining excellent performance for updating the data structure with new data.
+ConcurrentTrieMap is a simple trie map implementation that guarantees thread safety on some basic operations such as adding, deleting and modifying entries in the map. This data structure is optimized for usage in scenarios where fast concurrent prefix lookups are required while still retaining good performance for updating the data structure with new data.
